@@ -139,7 +139,7 @@ public class StockModel {
 	private Statement stmt;
 	private ResultSet rs;
 
-	public void insertStock() throws SQLException {
+	public void insertStock()  {
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = connection.prepareStatement(SqlCommand.insertStock);

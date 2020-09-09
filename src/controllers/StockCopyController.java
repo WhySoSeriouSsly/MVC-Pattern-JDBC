@@ -2,15 +2,11 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 import business.utilities.Messages;
 import models.StockModel;
 import views.CopyView;
 import views.StockListView;
-import views.StockOperationView;
 
 public class StockCopyController implements ActionListener {
 	private CopyView copyView;
@@ -22,7 +18,8 @@ public class StockCopyController implements ActionListener {
 		this.listView = listView;
 		listController = new StockListController(listView);
 	}
-	public void copyStock() throws SQLException {
+
+	public void copyStock() {
 		StockModel stock = new StockModel();
 		StockModel oldStock = stock.searchStock(listView.selectItem());
 		if (stock.searchStock(copyView.getData()) == null) {
@@ -38,10 +35,6 @@ public class StockCopyController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
-			copyStock();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+		copyStock();
 	}
 }

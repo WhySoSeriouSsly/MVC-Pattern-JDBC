@@ -2,7 +2,6 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import business.Validator;
 import business.utilities.Messages;
@@ -21,7 +20,7 @@ public class StockSaveController implements ActionListener {
 		this.operationView = operationView;
 	}
 
-	public void stockSave(StockModel stock) throws SQLException {
+	public void stockSave(StockModel stock) {
 		//StockModel stock = operationView.getData();
 		if (Validator.validate(stock) == false) {
 			JOptionPane.showMessageDialog(null, Messages.validation);
@@ -42,12 +41,8 @@ public class StockSaveController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		try {
 			stockSave(operationView.getData());
 			listController.listStock();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
 	}
 
 }
